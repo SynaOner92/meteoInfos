@@ -49,7 +49,7 @@ class ApiService: ApiServiceProtocol {
                             if let response = ApiResponse(json: json) {
                                 
                                 
-                                completion(response.previsions)
+                                completion(response.previsions.sorted(by: { $0.date < $1.date }))
                             }
                             
                             // TODO else

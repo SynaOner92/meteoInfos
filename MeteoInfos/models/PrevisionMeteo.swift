@@ -55,3 +55,4 @@ struct Prevision: Codable {
         self.pression = pressionJson?["niveau_de_la_mer"] as? Double
     }
 }
+
