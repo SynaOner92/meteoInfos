@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MainViewController: UIViewController {
     
@@ -16,16 +17,18 @@ class MainViewController: UIViewController {
     // MARK: - Private var
     private var previsionsResponse = [Prevision]()
     private let cellSpacingHeight: CGFloat = 10
+    private let manager = CLLocationManager()
     
     // MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        manager.delegate = self
+        manager.requestLocation()
+        
         previsionsTV.rowHeight = UITableView.automaticDimension
         previsionsTV.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        
-        loadDatas()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,11 +38,11 @@ class MainViewController: UIViewController {
     }
 
     // MARK: - Private func
-    private func loadDatas() {
+    private func loadDatas(location: CLLocation) {
         
         previsionsTV.isHidden = true
         
-        ApiService.sharedApiService.getPrevisionsMeteo { [weak self] previsions in
+        ApiService.sharedApiService.getPrevisionsMeteo(location: location.coordinate) { [weak self] previsions in
             
             guard let strongSelf = self else { return }
             
@@ -53,6 +56,19 @@ class MainViewController: UIViewController {
         }
         
     }
+}
+
+extension MainViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            loadDatas(location: location)
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to find user's location: \(error.localizedDescription)")
+    }
+
 }
 
 extension MainViewController: UITableViewDelegate { }

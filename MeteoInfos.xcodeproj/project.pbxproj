@@ -18,6 +18,7 @@
 		270C76FB23EC4E0B00AC75EB /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C76FA23EC4E0B00AC75EB /* ApiService.swift */; };
 		270C76FD23EC516200AC75EB /* PrevisionMeteo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C76FC23EC516200AC75EB /* PrevisionMeteo.swift */; };
 		270C76FF23EC7E9800AC75EB /* PrevisionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C76FE23EC7E9800AC75EB /* PrevisionCell.swift */; };
+		270C770123ECC74D00AC75EB /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C770023ECC74D00AC75EB /* CacheManager.swift */; };
 		8C3E21BA91D182FAF015233E /* Pods_MeteoInfos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D36160A1E697A629D9BD41 /* Pods_MeteoInfos.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		270C76FA23EC4E0B00AC75EB /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		270C76FC23EC516200AC75EB /* PrevisionMeteo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevisionMeteo.swift; sourceTree = "<group>"; };
 		270C76FE23EC7E9800AC75EB /* PrevisionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevisionCell.swift; sourceTree = "<group>"; };
+		270C770023ECC74D00AC75EB /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		37D36160A1E697A629D9BD41 /* Pods_MeteoInfos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeteoInfos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D68177DE87B6CCB474FB59E5 /* Pods-MeteoInfos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoInfos.debug.xcconfig"; path = "Target Support Files/Pods-MeteoInfos/Pods-MeteoInfos.debug.xcconfig"; sourceTree = "<group>"; };
 		E403E3D09F8A25C6C5FA67DA /* Pods-MeteoInfos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoInfos.release.xcconfig"; path = "Target Support Files/Pods-MeteoInfos/Pods-MeteoInfos.release.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				270C76FA23EC4E0B00AC75EB /* ApiService.swift */,
+				270C770023ECC74D00AC75EB /* CacheManager.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				270C76CA23EC4BD000AC75EB /* SceneDelegate.swift in Sources */,
 				270C76FB23EC4E0B00AC75EB /* ApiService.swift in Sources */,
 				270C76FF23EC7E9800AC75EB /* PrevisionCell.swift in Sources */,
+				270C770123ECC74D00AC75EB /* CacheManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
