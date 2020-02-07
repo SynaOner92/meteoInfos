@@ -34,10 +34,7 @@ class ApiService: ApiServiceProtocol {
         
         Alamofire.request(urlToCall)
             .validate()
-            .responseData { [weak self] response in
-                
-                guard let strongSelf = self else { return }
-                
+            .responseData { response in
                 switch response.result {
                     case .failure(let error):
                         print("todo \(error)")

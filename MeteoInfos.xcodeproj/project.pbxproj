@@ -16,10 +16,20 @@
 		270C76DF23EC4BD200AC75EB /* MeteoInfosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C76DE23EC4BD200AC75EB /* MeteoInfosTests.swift */; };
 		270C76EA23EC4BD200AC75EB /* MeteoInfosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C76E923EC4BD200AC75EB /* MeteoInfosUITests.swift */; };
 		270C76FB23EC4E0B00AC75EB /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C76FA23EC4E0B00AC75EB /* ApiService.swift */; };
-		270C76FD23EC516200AC75EB /* PrevisionMeteo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C76FC23EC516200AC75EB /* PrevisionMeteo.swift */; };
+		270C76FD23EC516200AC75EB /* DailyPrevisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C76FC23EC516200AC75EB /* DailyPrevisions.swift */; };
 		270C76FF23EC7E9800AC75EB /* PrevisionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C76FE23EC7E9800AC75EB /* PrevisionCell.swift */; };
 		270C770123ECC74D00AC75EB /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C770023ECC74D00AC75EB /* CacheManager.swift */; };
 		270C770323EE03B900AC75EB /* DailyPrevisionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C770223EE03B900AC75EB /* DailyPrevisionVC.swift */; };
+		270C770623EE121900AC75EB /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C770523EE121900AC75EB /* ImageHelper.swift */; };
+		270C770823EE12F900AC75EB /* PrevisionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C770723EE12F900AC75EB /* PrevisionHelper.swift */; };
+		270C770B23EE1A0F00AC75EB /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C770A23EE1A0F00AC75EB /* UIImageExtension.swift */; };
+		270C770D23EE1A4700AC75EB /* SequenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C770C23EE1A4700AC75EB /* SequenceExtension.swift */; };
+		270C770F23EE1A7000AC75EB /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C770E23EE1A7000AC75EB /* DoubleExtension.swift */; };
+		270C771123EE1A8F00AC75EB /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C771023EE1A8F00AC75EB /* UIImageViewExtension.swift */; };
+		270C771323EE1AF700AC75EB /* ConversionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C771223EE1AF700AC75EB /* ConversionHelper.swift */; };
+		270C771523EE27F500AC75EB /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C771423EE27F500AC75EB /* ApiResponse.swift */; };
+		270C771723EE28F900AC75EB /* WeatherType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C771623EE28F900AC75EB /* WeatherType.swift */; };
+		270C771923EE292600AC75EB /* Prevision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C771823EE292600AC75EB /* Prevision.swift */; };
 		8C3E21BA91D182FAF015233E /* Pods_MeteoInfos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D36160A1E697A629D9BD41 /* Pods_MeteoInfos.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,10 +66,20 @@
 		270C76E923EC4BD200AC75EB /* MeteoInfosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoInfosUITests.swift; sourceTree = "<group>"; };
 		270C76EB23EC4BD200AC75EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		270C76FA23EC4E0B00AC75EB /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
-		270C76FC23EC516200AC75EB /* PrevisionMeteo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevisionMeteo.swift; sourceTree = "<group>"; };
+		270C76FC23EC516200AC75EB /* DailyPrevisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPrevisions.swift; sourceTree = "<group>"; };
 		270C76FE23EC7E9800AC75EB /* PrevisionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevisionCell.swift; sourceTree = "<group>"; };
 		270C770023ECC74D00AC75EB /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		270C770223EE03B900AC75EB /* DailyPrevisionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPrevisionVC.swift; sourceTree = "<group>"; };
+		270C770523EE121900AC75EB /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		270C770723EE12F900AC75EB /* PrevisionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevisionHelper.swift; sourceTree = "<group>"; };
+		270C770A23EE1A0F00AC75EB /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		270C770C23EE1A4700AC75EB /* SequenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtension.swift; sourceTree = "<group>"; };
+		270C770E23EE1A7000AC75EB /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		270C771023EE1A8F00AC75EB /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		270C771223EE1AF700AC75EB /* ConversionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionHelper.swift; sourceTree = "<group>"; };
+		270C771423EE27F500AC75EB /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		270C771623EE28F900AC75EB /* WeatherType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherType.swift; sourceTree = "<group>"; };
+		270C771823EE292600AC75EB /* Prevision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prevision.swift; sourceTree = "<group>"; };
 		37D36160A1E697A629D9BD41 /* Pods_MeteoInfos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeteoInfos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D68177DE87B6CCB474FB59E5 /* Pods-MeteoInfos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoInfos.debug.xcconfig"; path = "Target Support Files/Pods-MeteoInfos/Pods-MeteoInfos.debug.xcconfig"; sourceTree = "<group>"; };
 		E403E3D09F8A25C6C5FA67DA /* Pods-MeteoInfos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoInfos.release.xcconfig"; path = "Target Support Files/Pods-MeteoInfos/Pods-MeteoInfos.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,9 +136,11 @@
 		270C76C623EC4BD000AC75EB /* MeteoInfos */ = {
 			isa = PBXGroup;
 			children = (
-				270C76F923EC4CA200AC75EB /* controllers */,
+				270C770923EE19FE00AC75EB /* extensions */,
+				270C770423EE120A00AC75EB /* helpers */,
 				270C76F823EC4C9C00AC75EB /* models */,
 				270C76F723EC4C8000AC75EB /* services */,
+				270C771A23EE299600AC75EB /* views */,
 				270C76C723EC4BD000AC75EB /* AppDelegate.swift */,
 				270C76C923EC4BD000AC75EB /* SceneDelegate.swift */,
 				270C76CD23EC4BD000AC75EB /* Main.storyboard */,
@@ -159,19 +181,43 @@
 		270C76F823EC4C9C00AC75EB /* models */ = {
 			isa = PBXGroup;
 			children = (
-				270C76FC23EC516200AC75EB /* PrevisionMeteo.swift */,
-				270C76FE23EC7E9800AC75EB /* PrevisionCell.swift */,
+				270C771423EE27F500AC75EB /* ApiResponse.swift */,
+				270C76FC23EC516200AC75EB /* DailyPrevisions.swift */,
+				270C771823EE292600AC75EB /* Prevision.swift */,
+				270C771623EE28F900AC75EB /* WeatherType.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
 		};
-		270C76F923EC4CA200AC75EB /* controllers */ = {
+		270C770423EE120A00AC75EB /* helpers */ = {
 			isa = PBXGroup;
 			children = (
-				270C76CB23EC4BD000AC75EB /* MainViewController.swift */,
-				270C770223EE03B900AC75EB /* DailyPrevisionVC.swift */,
+				270C771223EE1AF700AC75EB /* ConversionHelper.swift */,
+				270C770523EE121900AC75EB /* ImageHelper.swift */,
+				270C770723EE12F900AC75EB /* PrevisionHelper.swift */,
 			);
-			path = controllers;
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		270C770923EE19FE00AC75EB /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				270C770E23EE1A7000AC75EB /* DoubleExtension.swift */,
+				270C770C23EE1A4700AC75EB /* SequenceExtension.swift */,
+				270C770A23EE1A0F00AC75EB /* UIImageExtension.swift */,
+				270C771023EE1A8F00AC75EB /* UIImageViewExtension.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		270C771A23EE299600AC75EB /* views */ = {
+			isa = PBXGroup;
+			children = (
+				270C770223EE03B900AC75EB /* DailyPrevisionVC.swift */,
+				270C76CB23EC4BD000AC75EB /* MainViewController.swift */,
+				270C76FE23EC7E9800AC75EB /* PrevisionCell.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		8BF57E6B783BA573AFE4FCD5 /* Frameworks */ = {
@@ -366,13 +412,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270C770D23EE1A4700AC75EB /* SequenceExtension.swift in Sources */,
 				270C76CC23EC4BD000AC75EB /* MainViewController.swift in Sources */,
-				270C76FD23EC516200AC75EB /* PrevisionMeteo.swift in Sources */,
+				270C76FD23EC516200AC75EB /* DailyPrevisions.swift in Sources */,
+				270C770623EE121900AC75EB /* ImageHelper.swift in Sources */,
 				270C76C823EC4BD000AC75EB /* AppDelegate.swift in Sources */,
+				270C771523EE27F500AC75EB /* ApiResponse.swift in Sources */,
+				270C770B23EE1A0F00AC75EB /* UIImageExtension.swift in Sources */,
+				270C771923EE292600AC75EB /* Prevision.swift in Sources */,
 				270C76CA23EC4BD000AC75EB /* SceneDelegate.swift in Sources */,
 				270C770323EE03B900AC75EB /* DailyPrevisionVC.swift in Sources */,
+				270C771123EE1A8F00AC75EB /* UIImageViewExtension.swift in Sources */,
+				270C770F23EE1A7000AC75EB /* DoubleExtension.swift in Sources */,
+				270C771323EE1AF700AC75EB /* ConversionHelper.swift in Sources */,
 				270C76FB23EC4E0B00AC75EB /* ApiService.swift in Sources */,
+				270C770823EE12F900AC75EB /* PrevisionHelper.swift in Sources */,
 				270C76FF23EC7E9800AC75EB /* PrevisionCell.swift in Sources */,
+				270C771723EE28F900AC75EB /* WeatherType.swift in Sources */,
 				270C770123ECC74D00AC75EB /* CacheManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

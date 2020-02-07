@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
             let backItem = UIBarButtonItem()
             backItem.title = "Retour"
             navigationItem.backBarButtonItem = backItem
-            vc.dailyPrevision = previsionsResponse[previsionsTV.indexPathForSelectedRow!.row]
+            vc.dailyPrevision = previsionsResponse[previsionsTV.indexPathForSelectedRow!.section]
         }
     }
 
