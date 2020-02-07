@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreLocation
+import MapKit
 
 class MainViewController: UIViewController {
     
@@ -15,8 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet var previsionsTV: UITableView!
     
     // MARK: - Private var
-    private var previsionsResponse = [Prevision]()
-    private let cellSpacingHeight: CGFloat = 10
+    private var previsionsResponse = [DailyPrevisions]()
     private let manager = CLLocationManager()
     
     // MARK: - VC Lifecycle
@@ -24,9 +23,12 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
         manager.requestLocation()
         
         previsionsTV.rowHeight = UITableView.automaticDimension
+        previsionsTV.tableFooterView = UIView()
         previsionsTV.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
     }
@@ -35,6 +37,17 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         
         previsionsTV.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showDailyPrevisions" {
+            let vc = segue.destination as! DailyPrevisionVC
+            let backItem = UIBarButtonItem()
+            backItem.title = "Retour"
+            navigationItem.backBarButtonItem = backItem
+            vc.dailyPrevision = previsionsResponse[previsionsTV.indexPathForSelectedRow!.row]
+        }
     }
 
     // MARK: - Private func
@@ -50,7 +63,7 @@ class MainViewController: UIViewController {
                 strongSelf.previsionsResponse = previsions
                 strongSelf.previsionsTV.isHidden = false
             }
-            
+
             strongSelf.previsionsTV.reloadData()
             
         }
@@ -100,8 +113,8 @@ extension MainViewController: UITableViewDataSource {
         return previsionCell
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return cellSpacingHeight
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDailyPrevisions", sender: self)
     }
     
 }

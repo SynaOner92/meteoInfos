@@ -14,7 +14,7 @@ import CoreLocation
 protocol ApiServiceProtocol {
     func getPrevisionsMeteo(
         location: CLLocationCoordinate2D,
-        completion: @escaping ([Prevision]) -> Void
+        completion: @escaping ([DailyPrevisions]) -> Void
     )
 }
 
@@ -26,7 +26,7 @@ class ApiService: ApiServiceProtocol {
     
     private let apiURL = "http://www.infoclimat.fr/public-api/gfs/json"
     
-    func getPrevisionsMeteo(location: CLLocationCoordinate2D, completion: @escaping ([Prevision]) -> Void) {
+    func getPrevisionsMeteo(location: CLLocationCoordinate2D, completion: @escaping ([DailyPrevisions]) -> Void) {
         
         print("location.latitude: \(location.latitude)")
         print("location.longitude: \(location.longitude)")
@@ -34,7 +34,9 @@ class ApiService: ApiServiceProtocol {
         
         Alamofire.request(urlToCall)
             .validate()
-            .responseData { response in
+            .responseData { [weak self] response in
+                
+                guard let strongSelf = self else { return }
                 
                 switch response.result {
                     case .failure(let error):
@@ -46,14 +48,11 @@ class ApiService: ApiServiceProtocol {
                         
                         if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                             if let response = ApiResponse(json: json) {
-                                
-                                let sortedPrevisions = response.previsions.sorted(by: { $0.date < $1.date })
-                                
-                                
-                                completion(sortedPrevisions)
+                                completion(response.previsions)
                             }
                         }
                 }
             }
     }
 }
+

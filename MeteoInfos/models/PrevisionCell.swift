@@ -13,31 +13,56 @@ class PrevisionCell: UITableViewCell {
     
     @IBOutlet weak var datePrevision: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
-    @IBOutlet weak var temperaturePrevision: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var amountRainLabel: UILabel!
+    @IBOutlet weak var averageWindLabel: UILabel!
     
-    func setup(prevision: Prevision) {
+    func setup(prevision: DailyPrevisions) {
+        
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        dateFormatter.dateFormat = "d MMMM yyyy"
+        dateFormatter.locale = Locale(identifier: "FR-fr")
         
-        datePrevision.text = dateFormatter.string(from: prevision.date)
+        if let date = prevision.date {
+            datePrevision.text = dateFormatter.string(from: date)
+        }
         
-        if prevision.risqueNeige == "oui" {
-            weatherIcon.image = UIImage(named: "snowIcon")
-            weatherIcon.setImageColor(color: UIColor.blue)
-        } else if let pluie = prevision.pluie {
-            
-            if pluie > 10.0 {
-                weatherIcon.image = UIImage(named: "heavyRainIcon")
-            } else if pluie >= 0.1 {
-                weatherIcon.image = UIImage(named: "rainIcon")
+        if let minTemp = prevision.minTemperature?.convertToDegreeString(),
+            let maxTemp = prevision.maxTemperature?.convertToDegreeString() {
+            if minTemp == maxTemp {
+                let averageTemp = prevision.averageTemperature!.convertToDegreeString()
+                minTempLabel.text = "Moy : \(averageTemp)"
+                maxTempLabel.isHidden = true
             } else {
-                weatherIcon.image = UIImage(named: "sunIcon")
-                weatherIcon.setImageColor(color: UIColor.yellow)
+                maxTempLabel.isHidden = false
+                minTempLabel.text = "Min : \(minTemp)"
+                maxTempLabel.text = "Max : \(maxTemp)"
             }
         }
         
-        temperaturePrevision.text = prevision.temperature?.convertToDegreeString()
+        amountRainLabel.text = "Précipitations : \(prevision.amountRain.rounded(toPlaces: 2))mm"
+        
+        switch prevision.trendWeather {
+        case .heavyRain:
+            weatherIcon.image = UIImage(named: "heavyRainIcon")
+        case .rain:
+            weatherIcon.image = UIImage(named: "rainIcon")
+        case .snow:
+            weatherIcon.image = UIImage(named: "snowIcon")
+        case .sunny:
+            weatherIcon.image = UIImage(named: "sunIcon")
+        case .weakRain:
+            weatherIcon.image = UIImage(named: "weakRainIcon")
+        }
+        
+        if let averageWind = prevision.averageWind {
+            averageWindLabel.text = "Vit. du vent : \(Int(averageWind.rounded())) km/h"
+        } else {
+            averageWindLabel.text = "Pas de vent prévu"
+        }
+        
     }
 }
 

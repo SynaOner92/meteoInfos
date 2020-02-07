@@ -10,7 +10,8 @@ import Foundation
 
 struct ApiResponse: Codable {
     let requestState: Int
-    var previsions = [Prevision]()
+    
+    var previsions = [DailyPrevisions]()
     
     init?(json: [String: Any]) {
         guard
@@ -20,15 +21,150 @@ struct ApiResponse: Codable {
         self.requestState = requestState
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
+
+        var previsionsTemp = [String: [Prevision]]()
         for (key, value) in json {
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             if let data = value as? [String: Any],
                 let date = dateFormatter.date(from: key),
                 let prevision = Prevision(json: data, date: date) {
-                self.previsions.append(prevision)
+                
+                
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let dateString = dateFormatter.string(from: date)
+            
+                if previsionsTemp.contains(where: { $0.key == dateString }) {
+                    previsionsTemp[dateString]?.append(prevision)
+                } else {
+                    previsionsTemp[dateString] = [prevision]
+                }
             }
         }
+        
+        let sortedPrevisions = sortPrevisions(previsions: previsionsTemp)
+        
+        sortedPrevisions.forEach {
+            previsions.append(DailyPrevisions(previsions: $0.value))
+        }
+        
+    }
+}
+
+private func sortPrevisions(previsions: [String: [Prevision]]) -> [(key: String, value: [Prevision])] {
+    var sortedPrevisions = [String: [Prevision]]()
+    for (key, value) in previsions {
+        sortedPrevisions[key] = value.sorted(by: { $0.date < $1.date })
+    }
+
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    return sortedPrevisions.sorted(by: { dateFormatter.date(from: $0.0)! < dateFormatter.date(from: $1.0)! })
+}
+
+enum WeatherType {
+    case sunny
+    case snow
+    case rain
+    case weakRain
+    case heavyRain
+}
+
+struct DailyPrevisions: Codable {
+    let previsions: [Prevision]
+    
+    var trendWeather: WeatherType {
+        get {
+            if self.amountRain/24 > 8 {
+                return .heavyRain
+            } else if self.amountRain/24 >= 4 {
+                return .rain
+            } else if self.amountRain/24 > 0 {
+                return .weakRain
+            } else if self.canSnow {
+                return .snow
+            } else {
+                return .sunny
+            }
+        }
+    }
+    
+    var date: Date? {
+        get {
+            return previsions.first?.date
+        }
+    }
+    
+    var maxTemperature: Double? {
+        get {
+            return previsions.compactMap{ $0.temperature }.min()
+        }
+    }
+    
+    var minTemperature: Double? {
+        get {
+            return previsions.compactMap{ $0.temperature }.max()
+        }
+    }
+    
+    var averageTemperature: Double? {
+       get {
+           return previsions.compactMap{ $0.temperature }.average()
+       }
+    }
+    
+    var averageWind: Double? {
+        get {
+            return previsions.compactMap{ $0.ventMoyen }.average()
+        }
+    }
+    
+    var minWind: Double? {
+        get {
+            return previsions.compactMap{ $0.ventMoyen }.min()
+        }
+    }
+    
+    var maxWind: Double? {
+        get {
+            return previsions.compactMap{ $0.ventMoyen }.max()
+        }
+    }
+      
+    var amountRain: Double {
+        get {
+            return previsions.compactMap{ $0.pluie }.total()
+        }
+    }
+    
+    var canSnow: Bool {
+        get {
+            return previsions.compactMap{ $0.risqueNeige }.contains("oui")
+        }
+    }
+
+}
+
+extension Sequence where Element: BinaryFloatingPoint {
+    func average() -> Element? {
+        var i: Element = 0
+        var total: Element = 0
+
+        for value in self {
+            total = total + value
+            i += 1
+        }
+
+        return i == 0 ? nil : total / i
+    }
+    
+    func total() -> Element {
+        var total: Element = 0
+        
+        for value in self {
+            total = total + value
+        }
+        
+        return total
     }
 }
 
