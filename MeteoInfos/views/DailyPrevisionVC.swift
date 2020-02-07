@@ -32,25 +32,9 @@ class DailyPrevisionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let date = dailyPrevision.date {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "d MMMM yyyy"
-            dateFormatter.locale = Locale(identifier: "FR-fr")
-            self.title = "Prévisions du \(dateFormatter.string(from: date))"
-        } else {
-            dismiss(animated: true, completion: nil)
-        }
-        
-        if (dailyPrevision.numberOfPrevision == 1) {
-            // todo hide segment
-        } else {
-            for (index, prevision) in dailyPrevision.previsions.enumerated() {
-                index > 1 ? hoursSC.insertSegment(withTitle: prevision.dateDisplay, at: index, animated: false) : hoursSC.setTitle(prevision.dateDisplay, forSegmentAt: index)
-            }
-        }
-        
+        setTitle()
+        setSegmentedControl()
         updatePrevisionView()
-    
     }
     
     // MARK: IBAction
@@ -59,6 +43,27 @@ class DailyPrevisionVC: UIViewController {
     }
     
     // MARK: Private func
+    private func setTitle() {
+        if let date = dailyPrevision.date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "d MMMM yyyy"
+            dateFormatter.locale = Locale(identifier: "FR-fr")
+            self.title = "Prévisions du \(dateFormatter.string(from: date))"
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    private func setSegmentedControl() {
+        if (dailyPrevision.numberOfPrevision == 1) {
+            // todo hide segment
+        } else {
+            for (index, prevision) in dailyPrevision.previsions.enumerated() {
+                index > 1 ? hoursSC.insertSegment(withTitle: prevision.dateDisplay, at: index, animated: false) : hoursSC.setTitle(prevision.dateDisplay, forSegmentAt: index)
+            }
+        }
+    }
+    
     private func updatePrevisionView() {
         let selectedPrevision = dailyPrevision.previsions[hoursSC.selectedSegmentIndex]
         
