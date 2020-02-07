@@ -49,7 +49,7 @@ class PrevisionCell: UITableViewCell {
                                                                                                            canSnow: prevision.canSnow))
         
         if let averageWind = prevision.averageWind {
-            averageWindLabel.text = "Vit. du vent : \(averageWind.convertKelvinToDegreeString())"
+            averageWindLabel.text = "Vit. du vent : \(averageWind.convertVitesseToString())"
         } else {
             averageWindLabel.text = "Pas de vent prévu"
         }
