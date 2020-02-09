@@ -20,40 +20,20 @@ class PrevisionCell: UITableViewCell {
     @IBOutlet weak var averageWindLabel: UILabel!
     
     // MARK: Init
-    func setup(prevision: DailyPrevisions) {
-    
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d MMMM yyyy"
-        dateFormatter.locale = Locale(identifier: "FR-fr")
+    func setup(withPrevisionCellViewModel previsionCellViewModel: PrevisionCellViewModel) {
         
-        if let date = prevision.date {
-            datePrevision.text = dateFormatter.string(from: date)
-        }
+        datePrevision.text = previsionCellViewModel.date
         
-        if let minTemp = prevision.minTemperature?.convertKelvinToDegreeString(),
-            let maxTemp = prevision.maxTemperature?.convertKelvinToDegreeString() {
-            if minTemp == maxTemp {
-                let averageTemp = prevision.averageTemperature!.convertKelvinToDegreeString()
-                minTempLabel.text = "Moy : \(averageTemp)"
-                maxTempLabel.isHidden = true
-            } else {
-                maxTempLabel.isHidden = false
-                minTempLabel.text = "Min. : \(minTemp)"
-                maxTempLabel.text = "Max. : \(maxTemp)"
-            }
-        }
+        minTempLabel.text = previsionCellViewModel.minTemperatureAvailable ? previsionCellViewModel.minTemperature : previsionCellViewModel.averageTemperature
+        maxTempLabel.text = previsionCellViewModel.maxTemperature
+        maxTempLabel.isHidden = !previsionCellViewModel.minTemperatureAvailable
         
-        amountRainLabel.text = "Précipitations : \(prevision.amountRain.rounded(toPlaces: 2))mm"
+        amountRainLabel.text = previsionCellViewModel.amountRain
         
-        weatherIcon.image = ImageHelper.getWeatherPictoImage(trendWeather: PrevisionHelper.getTrendWeather(amountRain: prevision.amountRain,
-                                                                                                           canSnow: prevision.canSnow))
+        weatherIcon.image = previsionCellViewModel.weatherIcon
         
-        if let averageWind = prevision.averageWind {
-            averageWindLabel.text = "Vit. du vent : \(averageWind.convertVitesseToString())"
-        } else {
-            averageWindLabel.text = "Pas de vent prévu"
-        }
-        
+        averageWindLabel.text = previsionCellViewModel.averageWind
+        averageWindLabel.isHidden = !previsionCellViewModel.averageWindAvailable
     }
 }
 

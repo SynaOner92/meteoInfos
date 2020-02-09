@@ -200,7 +200,7 @@ extension MainViewController: UITableViewDataSource {
         }
 
         if previsionsResponse.indices.contains(indexPath.section) {
-            previsionCell.setup(prevision: previsionsResponse[indexPath.section])
+            previsionCell.setup(withPrevisionCellViewModel: PrevisionCellViewModel(dailyPrevision: previsionsResponse[indexPath.section]))
         }
 
         return previsionCell

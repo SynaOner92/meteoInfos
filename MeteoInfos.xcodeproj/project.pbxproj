@@ -37,6 +37,10 @@
 		270C772823F07C9400AC75EB /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C772723F07C9400AC75EB /* UIImageViewExtension.swift */; };
 		270C772D23F07F7E00AC75EB /* ConvertionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C772C23F07F7E00AC75EB /* ConvertionHelper.swift */; };
 		270C772F23F080BB00AC75EB /* PrevisionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C772E23F080BB00AC75EB /* PrevisionHelper.swift */; };
+		271CF06323F0AA2000F70605 /* PrevisionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CF06223F0AA2000F70605 /* PrevisionViewModel.swift */; };
+		271CF06523F0AED400F70605 /* PrevisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CF06423F0AED400F70605 /* PrevisionView.swift */; };
+		271CF06723F0AF0E00F70605 /* PrevisionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271CF06623F0AF0E00F70605 /* PrevisionView.xib */; };
+		271CF06923F0C2C600F70605 /* PrevisionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CF06823F0C2C600F70605 /* PrevisionCellViewModel.swift */; };
 		8C3E21BA91D182FAF015233E /* Pods_MeteoInfos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D36160A1E697A629D9BD41 /* Pods_MeteoInfos.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +98,10 @@
 		270C772723F07C9400AC75EB /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		270C772C23F07F7E00AC75EB /* ConvertionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertionHelper.swift; sourceTree = "<group>"; };
 		270C772E23F080BB00AC75EB /* PrevisionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevisionHelper.swift; sourceTree = "<group>"; };
+		271CF06223F0AA2000F70605 /* PrevisionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevisionViewModel.swift; sourceTree = "<group>"; };
+		271CF06423F0AED400F70605 /* PrevisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevisionView.swift; sourceTree = "<group>"; };
+		271CF06623F0AF0E00F70605 /* PrevisionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrevisionView.xib; sourceTree = "<group>"; };
+		271CF06823F0C2C600F70605 /* PrevisionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevisionCellViewModel.swift; sourceTree = "<group>"; };
 		37D36160A1E697A629D9BD41 /* Pods_MeteoInfos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeteoInfos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D68177DE87B6CCB474FB59E5 /* Pods-MeteoInfos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoInfos.debug.xcconfig"; path = "Target Support Files/Pods-MeteoInfos/Pods-MeteoInfos.debug.xcconfig"; sourceTree = "<group>"; };
 		E403E3D09F8A25C6C5FA67DA /* Pods-MeteoInfos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeteoInfos.release.xcconfig"; path = "Target Support Files/Pods-MeteoInfos/Pods-MeteoInfos.release.xcconfig"; sourceTree = "<group>"; };
@@ -154,10 +162,10 @@
 				270C770423EE120A00AC75EB /* helpers */,
 				270C76F823EC4C9C00AC75EB /* models */,
 				270C76F723EC4C8000AC75EB /* services */,
+				271CF06123F0AA0C00F70605 /* viewModels */,
 				270C771A23EE299600AC75EB /* views */,
 				270C76C723EC4BD000AC75EB /* AppDelegate.swift */,
 				270C76C923EC4BD000AC75EB /* SceneDelegate.swift */,
-				270C76CD23EC4BD000AC75EB /* Main.storyboard */,
 				270C76D023EC4BD200AC75EB /* Assets.xcassets */,
 				270C76D223EC4BD200AC75EB /* LaunchScreen.storyboard */,
 				270C76D523EC4BD200AC75EB /* Info.plist */,
@@ -231,9 +239,12 @@
 		270C771A23EE299600AC75EB /* views */ = {
 			isa = PBXGroup;
 			children = (
+				270C76CD23EC4BD000AC75EB /* Main.storyboard */,
 				270C770223EE03B900AC75EB /* DailyPrevisionVC.swift */,
 				270C76CB23EC4BD000AC75EB /* MainViewController.swift */,
 				270C76FE23EC7E9800AC75EB /* PrevisionCell.swift */,
+				271CF06423F0AED400F70605 /* PrevisionView.swift */,
+				271CF06623F0AF0E00F70605 /* PrevisionView.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -255,6 +266,15 @@
 				270C772E23F080BB00AC75EB /* PrevisionHelper.swift */,
 			);
 			path = helpers;
+			sourceTree = "<group>";
+		};
+		271CF06123F0AA0C00F70605 /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				271CF06223F0AA2000F70605 /* PrevisionViewModel.swift */,
+				271CF06823F0C2C600F70605 /* PrevisionCellViewModel.swift */,
+			);
+			path = viewModels;
 			sourceTree = "<group>";
 		};
 		8BF57E6B783BA573AFE4FCD5 /* Frameworks */ = {
@@ -380,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				271CF06723F0AF0E00F70605 /* PrevisionView.xib in Resources */,
 				270C76D423EC4BD200AC75EB /* LaunchScreen.storyboard in Resources */,
 				270C76D123EC4BD200AC75EB /* Assets.xcassets in Resources */,
 				270C76CF23EC4BD000AC75EB /* Main.storyboard in Resources */,
@@ -457,6 +478,7 @@
 				270C771523EE27F500AC75EB /* ApiResponse.swift in Sources */,
 				270C770B23EE1A0F00AC75EB /* UIImageExtension.swift in Sources */,
 				270C771923EE292600AC75EB /* Prevision.swift in Sources */,
+				271CF06323F0AA2000F70605 /* PrevisionViewModel.swift in Sources */,
 				270C76CA23EC4BD000AC75EB /* SceneDelegate.swift in Sources */,
 				270C770323EE03B900AC75EB /* DailyPrevisionVC.swift in Sources */,
 				270C771C23F041F800AC75EB /* ReachabilityHelper.swift in Sources */,
@@ -464,7 +486,9 @@
 				270C770F23EE1A7000AC75EB /* DoubleExtension.swift in Sources */,
 				270C771323EE1AF700AC75EB /* ConversionHelper.swift in Sources */,
 				270C76FB23EC4E0B00AC75EB /* ApiService.swift in Sources */,
+				271CF06523F0AED400F70605 /* PrevisionView.swift in Sources */,
 				270C770823EE12F900AC75EB /* PrevisionHelper.swift in Sources */,
+				271CF06923F0C2C600F70605 /* PrevisionCellViewModel.swift in Sources */,
 				270C76FF23EC7E9800AC75EB /* PrevisionCell.swift in Sources */,
 				270C771723EE28F900AC75EB /* WeatherType.swift in Sources */,
 				270C770123ECC74D00AC75EB /* CacheManager.swift in Sources */,
