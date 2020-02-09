@@ -28,8 +28,7 @@ class ApiService: ApiServiceProtocol {
     
     func getPrevisionsMeteo(location: CLLocationCoordinate2D, completion: @escaping (Result<[DailyPrevisions]>) -> Void) {
         
-        print("location.latitude: \(location.latitude)")
-        print("location.longitude: \(location.longitude)")
+        debugPrint("Call API with: location.latitude: \(location.latitude), location.longitude: \(location.longitude)")
         let urlToCall = "http://www.infoclimat.fr/public-api/gfs/json?_ll=\(location.latitude),\(location.longitude)&_auth=AxlUQ1YoXH5Sf1tsD3kCK1M7AjcBdwcgBnpRMg5rAH0Bal4%2FVDRUMl8xA34OIQYwBSgHZAswUmIDaFIqCXtTMgNpVDhWPVw7Uj1bPg8gAilTfQJjASEHIAZjUTQOfQBhAWFeJFQ%2FVDJfLgNgDj8GNgUpB3gLNVJvA2hSNQltUzkDZFQzVjJcPFIiWyYPOgJjU2MCMQE%2BB2kGYVEyDjYAYwE0Xj1UM1QxXy4DYA47BjAFPgdnCzBSbgNlUioJe1NJAxNULVZ1XHxSaFt%2FDyICY1M%2BAjY%3D&_c=2628f7cd8d4a81ed1eeb13c822b34207"
         
         Alamofire.request(urlToCall)

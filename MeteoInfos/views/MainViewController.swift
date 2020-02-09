@@ -172,7 +172,7 @@ extension MainViewController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         setAuthorizationDeniedLocation()
-        print("Failed to find user's location: \(error.localizedDescription)")
+        debugPrint("Failed to find user's location: \(error.localizedDescription)")
     }
 
 }
@@ -214,6 +214,8 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: ReachabilityActionDelegate, ReachabilityObserverDelegate {
     func reachabilityChanged(_ isReachable: Bool) {
-        self.isNetworkReachable = isReachable
+        if isReachable != self.isNetworkReachable {
+            self.isNetworkReachable = isReachable
+        }
     }
 }
