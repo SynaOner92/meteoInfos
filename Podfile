@@ -3,6 +3,7 @@ target 'MeteoInfos' do
   	use_frameworks!
 
   	# Pods for MeteoInfos
-	pod 'Alamofire', 	'~> 4.7'
+	pod 'Alamofire', 		'~> 4.7'
+	pod 'ReachabilitySwift', 	'~> 5.0.0'
 
 end

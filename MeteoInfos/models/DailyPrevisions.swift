@@ -10,6 +10,8 @@ import Foundation
 
 struct DailyPrevisions: Codable {
     let previsions: [Prevision]
+    let latitude: Double
+    let longitude:Double
     
     var numberOfPrevision: Int { return previsions.count }
     var date: Date? { return previsions.first?.date }

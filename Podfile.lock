@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (4.9.1)
+  - ReachabilitySwift (5.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - ReachabilitySwift (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - ReachabilitySwift
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
 
-PODFILE CHECKSUM: 6e311b4c2cca997fa7e63dad6b039ed90b2300bd
+PODFILE CHECKSUM: 7db3f3abd57ae92be0abfa06c0f5dda1f97d64af
 
 COCOAPODS: 1.8.4

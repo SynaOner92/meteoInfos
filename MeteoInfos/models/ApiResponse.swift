@@ -12,7 +12,7 @@ struct ApiResponse: Codable {
     let requestState: Int
     var previsions = [DailyPrevisions]()
     
-    init?(json: [String: Any]) {
+    init?(json: [String: Any], latitude: Double, longitude: Double) {
         guard
             let requestState = json["request_state"] as? Int
             else { return nil }
@@ -39,7 +39,7 @@ struct ApiResponse: Codable {
         }
         
         sortPrevisions(previsions: previsionsTemp).forEach {
-            previsions.append(DailyPrevisions(previsions: $0.value))
+            previsions.append(DailyPrevisions(previsions: $0.value, latitude: latitude, longitude: longitude))
         }
     }
     

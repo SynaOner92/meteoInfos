@@ -14,7 +14,7 @@ import CoreLocation
 protocol ApiServiceProtocol {
     func getPrevisionsMeteo(
         location: CLLocationCoordinate2D,
-        completion: @escaping ([DailyPrevisions]) -> Void
+        completion: @escaping (Result<[DailyPrevisions]>) -> Void
     )
 }
 
@@ -26,7 +26,7 @@ class ApiService: ApiServiceProtocol {
     
     private let apiURL = "http://www.infoclimat.fr/public-api/gfs/json"
     
-    func getPrevisionsMeteo(location: CLLocationCoordinate2D, completion: @escaping ([DailyPrevisions]) -> Void) {
+    func getPrevisionsMeteo(location: CLLocationCoordinate2D, completion: @escaping (Result<[DailyPrevisions]>) -> Void) {
         
         print("location.latitude: \(location.latitude)")
         print("location.longitude: \(location.longitude)")
@@ -37,17 +37,28 @@ class ApiService: ApiServiceProtocol {
             .responseData { response in
                 switch response.result {
                     case .failure(let error):
-                        print("todo \(error)")
+                        debugPrint(error)
+                        completion(Result.failure(ApplicationError.alamofireError))
                     case .success(let data):
-
-                        let defaults = UserDefaults.standard
-                        defaults.set(data, forKey: defaultsKeys.previsionsKey)
-                        
                         if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                            if let response = ApiResponse(json: json) {
-                                completion(response.previsions)
+                            if let response = ApiResponse(json: json,
+                                                          latitude: location.latitude.rounded(toPlaces: 2),
+                                                          longitude: location.longitude.rounded(toPlaces: 2)) {
+                                if response.requestState == 200 {
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(try? PropertyListEncoder().encode(response.previsions),
+                                                 forKey: defaultsKeys.previsionsKey)
+                                    completion(Result.success(response.previsions))
+                                } else {
+                                    debugPrint(response.requestState)
+                                    completion(Result.failure(ApplicationError.not200))
+                                }
+                            } else {
+                                completion(Result.failure(ApplicationError.castFailure))
                             }
-                        }
+                        } else {
+                            completion(Result.failure(ApplicationError.castFailure))
+                    }
                 }
             }
     }

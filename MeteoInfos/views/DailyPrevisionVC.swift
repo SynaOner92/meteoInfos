@@ -12,7 +12,7 @@ import UIKit
 class DailyPrevisionVC: UIViewController {
     
     // MARK: var
-    var dailyPrevision: DailyPrevisions = DailyPrevisions(previsions: [Prevision]())
+    var dailyPrevision: DailyPrevisions = DailyPrevisions(previsions: [Prevision](), latitude: 0, longitude: 0)
 
     // MARK: IBOutlet
     @IBOutlet weak var hoursSC: UISegmentedControl!
