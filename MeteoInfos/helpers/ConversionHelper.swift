@@ -11,7 +11,7 @@ import Foundation
 class ConversionHelper {
     
     static func kelvinToDegree(kelvin: Double) -> Double {
-        return kelvin - 273.5
+        return kelvin - 273.15
     }
     
     static func degreeToRadius(degree: Int) -> Float {
