@@ -43,7 +43,7 @@ class DailyPrevisionVC: UIViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "d MMMM yyyy"
             dateFormatter.locale = Locale(identifier: "FR-fr")
-            self.title = "Prévisions du \(dateFormatter.string(from: date))"
+            self.title = "Prévisions : \(dateFormatter.string(from: date))"
         } else {
             dismiss(animated: true, completion: nil)
         }
@@ -51,7 +51,7 @@ class DailyPrevisionVC: UIViewController {
     
     private func setSegmentedControl() {
         if (dailyPrevision.numberOfPrevision == 1) {
-            // todo hide segment
+            hoursSC.isHidden = true
         } else {
             for (index, prevision) in dailyPrevision.previsions.enumerated() {
                 index > 1 ? hoursSC.insertSegment(withTitle: prevision.dateDisplay, at: index, animated: false) : hoursSC.setTitle(prevision.dateDisplay, forSegmentAt: index)
