@@ -13,8 +13,8 @@ struct DailyPrevisions: Codable {
     
     var numberOfPrevision: Int { return previsions.count }
     var date: Date? { return previsions.first?.date }
-    var maxTemperature: Double? { return previsions.compactMap{ $0.temperature }.min() }
-    var minTemperature: Double? { return previsions.compactMap{ $0.temperature }.max() }
+    var maxTemperature: Double? { return previsions.compactMap{ $0.temperature }.max() }
+    var minTemperature: Double? { return previsions.compactMap{ $0.temperature }.min() }
     var averageTemperature: Double? { return previsions.compactMap{ $0.temperature }.average() }
     var averageWind: Double? { return previsions.compactMap{ $0.averageWind }.average() }
     var minWind: Double? { return previsions.compactMap{ $0.averageWind }.min() }
