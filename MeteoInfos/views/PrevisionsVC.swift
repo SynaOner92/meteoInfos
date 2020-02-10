@@ -11,14 +11,14 @@ import MapKit
 import Reachability
 
 @objcMembers
-class MainViewController: UIViewController {
+class PrevisionsVC: UIViewController {
     
     // MARK: - IBOutlet
-    @IBOutlet weak var previsionsTV: UITableView!
-    @IBOutlet weak var informationLabel: UILabel!
-    @IBOutlet weak var refreshButton: UIButton!
-    @IBOutlet weak var informationStackView: UIStackView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak private var previsionsTV: UITableView!
+    @IBOutlet weak private var informationLabel: UILabel!
+    @IBOutlet weak private var refreshButton: UIButton!
+    @IBOutlet weak private var informationStackView: UIStackView!
+    @IBOutlet weak private var loadingIndicator: UIActivityIndicatorView!
     
     // MARK: - Private var
     private var previsionsResponse: [DailyPrevisions] = [] {
@@ -61,6 +61,7 @@ class MainViewController: UIViewController {
         
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.startUpdatingLocation()
 
         previsionsTV.rowHeight = UITableView.automaticDimension
         previsionsTV.tableFooterView = UIView()
@@ -143,6 +144,10 @@ class MainViewController: UIViewController {
         refreshButton.addTarget(self, action: #selector(retryButton(sender:)), for: .touchUpInside)
     }
     
+    private func removeInformation() {
+        information = nil
+    }
+    
     // MARK: - objcMembers
     func redirectToLocationOption(sender: UIButton) {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
@@ -155,7 +160,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: CLLocationManagerDelegate {
+extension PrevisionsVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .denied || status == .notDetermined{
             setAuthorizationDeniedLocation()
@@ -165,8 +170,11 @@ extension MainViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
+        if let location = locations.first,
+            location.coordinate.latitude.rounded(toPlaces: 2) != self.location?.coordinate.latitude.rounded(toPlaces: 2),
+            location.coordinate.longitude.rounded(toPlaces: 2) != self.location?.coordinate.longitude.rounded(toPlaces: 2) {
             self.location = location
+            self.removeInformation()
         }
     }
 
@@ -177,9 +185,9 @@ extension MainViewController: CLLocationManagerDelegate {
 
 }
 
-extension MainViewController: UITableViewDelegate { }
+extension PrevisionsVC: UITableViewDelegate { }
 
-extension MainViewController: UITableViewDataSource {
+extension PrevisionsVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return previsionsResponse.count
@@ -200,7 +208,7 @@ extension MainViewController: UITableViewDataSource {
         }
 
         if previsionsResponse.indices.contains(indexPath.section) {
-            previsionCell.setup(withPrevisionCellViewModel: PrevisionCellViewModel(dailyPrevision: previsionsResponse[indexPath.section]))
+            previsionCell.setup(withPrevisionCellVM: PrevisionCellVM(dailyPrevisions: previsionsResponse[indexPath.section]))
         }
 
         return previsionCell
@@ -212,7 +220,7 @@ extension MainViewController: UITableViewDataSource {
     
 }
 
-extension MainViewController: ReachabilityActionDelegate, ReachabilityObserverDelegate {
+extension PrevisionsVC: ReachabilityActionDelegate, ReachabilityObserverDelegate {
     func reachabilityChanged(_ isReachable: Bool) {
         if isReachable != self.isNetworkReachable {
             self.isNetworkReachable = isReachable

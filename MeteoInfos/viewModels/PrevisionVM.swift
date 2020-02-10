@@ -1,5 +1,5 @@
 //
-//  PrevisionViewModel.swift
+//  PrevisionVM.swift
 //  MeteoInfos
 //
 //  Created by Michael Coqueret on 09/02/2020.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class PrevisionViewModel {
+public class PrevisionVM {
     
     private let prevision: Prevision
     private let previousPrevision: Prevision?

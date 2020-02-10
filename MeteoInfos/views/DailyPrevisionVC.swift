@@ -15,8 +15,8 @@ class DailyPrevisionVC: UIViewController {
     var dailyPrevision: DailyPrevisions = DailyPrevisions(previsions: [Prevision](), latitude: 0, longitude: 0)
 
     // MARK: IBOutlet
-    @IBOutlet weak var hoursSC: UISegmentedControl!
-    @IBOutlet weak var previsionView: PrevisionView!
+    @IBOutlet weak private var hoursSC: UISegmentedControl!
+    @IBOutlet weak private var previsionView: PrevisionView!
     
     // MARK: VC LifeCycle
     override func viewDidLoad() {
@@ -33,7 +33,7 @@ class DailyPrevisionVC: UIViewController {
         
         let selectedPrevision = dailyPrevision.previsions[hoursSC.selectedSegmentIndex]
         let previousPrevision = hoursSC.selectedSegmentIndex == 0 ? nil : dailyPrevision.previsions[hoursSC.selectedSegmentIndex-1]
-        previsionView.configure(withPrevisionViewModel: PrevisionViewModel(prevision: selectedPrevision, previousPrevision: previousPrevision))
+        previsionView.configure(withPrevisionVM: PrevisionVM(prevision: selectedPrevision, previousPrevision: previousPrevision))
         
     }
     
@@ -62,7 +62,7 @@ class DailyPrevisionVC: UIViewController {
     private func updatePrevisionView() {
         let selectedPrevision = dailyPrevision.previsions[hoursSC.selectedSegmentIndex]
         let previousPrevision = hoursSC.selectedSegmentIndex == 0 ? nil : dailyPrevision.previsions[hoursSC.selectedSegmentIndex-1]
-        previsionView.configure(withPrevisionViewModel: PrevisionViewModel(prevision: selectedPrevision, previousPrevision: previousPrevision))
+        previsionView.configure(withPrevisionVM: PrevisionVM(prevision: selectedPrevision, previousPrevision: previousPrevision))
     }
     
     private func setImageView(imageView: UIImageView, selectedData: Double, previousData: Double) {

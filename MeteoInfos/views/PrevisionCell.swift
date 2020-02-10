@@ -12,28 +12,28 @@ import UIKit
 class PrevisionCell: UITableViewCell {
     
     // MARK: IBOutlet
-    @IBOutlet weak var datePrevision: UILabel!
-    @IBOutlet weak var weatherIcon: UIImageView!
-    @IBOutlet weak var minTempLabel: UILabel!
-    @IBOutlet weak var maxTempLabel: UILabel!
-    @IBOutlet weak var amountRainLabel: UILabel!
-    @IBOutlet weak var averageWindLabel: UILabel!
+    @IBOutlet weak private var datePrevision: UILabel!
+    @IBOutlet weak private var weatherIcon: UIImageView!
+    @IBOutlet weak private var minTempLabel: UILabel!
+    @IBOutlet weak private var maxTempLabel: UILabel!
+    @IBOutlet weak private var amountRainLabel: UILabel!
+    @IBOutlet weak private var averageWindLabel: UILabel!
     
     // MARK: Init
-    func setup(withPrevisionCellViewModel previsionCellViewModel: PrevisionCellViewModel) {
+    func setup(withPrevisionCellVM previsionCellVM: PrevisionCellVM) {
         
-        datePrevision.text = previsionCellViewModel.date
+        datePrevision.text = previsionCellVM.date
         
-        minTempLabel.text = previsionCellViewModel.minTemperatureAvailable ? previsionCellViewModel.minTemperature : previsionCellViewModel.averageTemperature
-        maxTempLabel.text = previsionCellViewModel.maxTemperature
-        maxTempLabel.isHidden = !previsionCellViewModel.minTemperatureAvailable
+        minTempLabel.text = previsionCellVM.minTemperatureAvailable ? previsionCellVM.minTemperature : previsionCellVM.averageTemperature
+        maxTempLabel.text = previsionCellVM.maxTemperature
+        maxTempLabel.isHidden = !previsionCellVM.minTemperatureAvailable
         
-        amountRainLabel.text = previsionCellViewModel.amountRain
+        amountRainLabel.text = previsionCellVM.amountRain
         
-        weatherIcon.image = previsionCellViewModel.weatherIcon
+        weatherIcon.image = previsionCellVM.weatherIcon
         
-        averageWindLabel.text = previsionCellViewModel.averageWind
-        averageWindLabel.isHidden = !previsionCellViewModel.averageWindAvailable
+        averageWindLabel.text = previsionCellVM.averageWind
+        averageWindLabel.isHidden = !previsionCellVM.averageWindAvailable
     }
 }
 

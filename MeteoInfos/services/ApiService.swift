@@ -10,15 +10,7 @@ import Foundation
 import Alamofire
 import CoreLocation
 
-
-protocol ApiServiceProtocol {
-    func getPrevisionsMeteo(
-        location: CLLocationCoordinate2D,
-        completion: @escaping (Result<[DailyPrevisions]>) -> Void
-    )
-}
-
-class ApiService: ApiServiceProtocol {
+class ApiService {
         
     static let sharedApiService = ApiService()
     
